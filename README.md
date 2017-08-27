@@ -1,0 +1,2 @@
+# MyDictionaryApp
+Xamarin Forms App
