@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <style name="MainTheme" parent="MainTheme.Base">
+  </style>
+	
+  <style name="MainTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="colorPrimary">#0aca91</item>
+    <item name="colorPrimaryDark">#0aca91</item>
+    <item name="colorAccent">#0aca91</item>
+    <item name="windowActionModeOverlay">true</item>
+
+    <item name="android:textCursorDrawable">@null</item>
+    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+    <item name="android:buttonStyle">@style/AppButtonStyle</item>
+    <item name="android:windowBackground">@android:color/white</item>
+  </style>
+
+  <style name="Theme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="windowNoTitle">true</item>
+    <item name="android:background">@drawable/ic_background</item>
+    <item name="colorPrimaryDark">#0aca91</item>
+  </style>
+
+  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <item name="colorAccent">#0aca91</item>
+  </style>
+
+  <style name="AppButtonStyle" parent="android:style/Widget.Button">
+    <item name="textAllCaps">false</item>
+  </style>
+</resources>

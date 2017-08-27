@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:ctrl="clr-namespace:MyDictionary.Controls;assembly=MyDictionary"
+    xmlns:behaviors="clr-namespace:MyDictionary.Behaviors;assembly=MyDictionary"
+    xmlns:effects="clr-namespace:MyDictionary.Effects;assembly=MyDictionary"
+    xmlns:helpers="clr-namespace:MyDictionary.Helpers;assembly=MyDictionary"
+    x:Class="MyDictionary.Pages.HomePage"
+	Title="My dictionary">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+			
+            <Style x:Key="AddNewButtonStyle"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="HeightRequest"
+                        Value="45" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LargeSize}" />
+            </Style>
+
+            <Style x:Key="CustomLabelStyle"
+                   TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+            </Style>
+
+			<Style x:Key="DictionaryTitleLabelStyle"
+                   TargetType="{x:Type Label}"
+                   BasedOn="{StaticResource MontserratRegularLabelStyle}">
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource BigSize}" />
+            </Style>
+
+            <Style x:Key="DictionarySubtitleLabelStyle"
+                   TargetType="{x:Type Label}"
+                   BasedOn="{StaticResource MontserratRegularLabelStyle}">
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LargeSize}" />
+            </Style>
+
+			<Style x:Key="ResultTitleLabelStyle"
+                   TargetType="{x:Type Label}"
+                   BasedOn="{StaticResource MontserratRegularLabelStyle}">
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LargeSize}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+		<Image Aspect="AspectFill">
+            <Image.Source>
+                <OnPlatform 
+                    x:TypeArguments="ImageSource"/>
+            </Image.Source>
+        </Image>
+        <Grid>
+            <Grid.Padding>
+                <OnPlatform 
+                    x:TypeArguments="Thickness"
+                    iOS="0, 0, 0, 20"
+                    Android="0, 0, 0, 30"/>
+            </Grid.Padding>
+            <Grid.VerticalOptions>
+                <OnPlatform x:TypeArguments="LayoutOptions"
+                    Android="FillAndExpand"
+                    iOS="FillAndExpand"/>
+            </Grid.VerticalOptions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+				<RowDefinition>
+                    <RowDefinition.Height>
+                        <OnPlatform 
+                            x:TypeArguments="GridLength"
+                            iOS="160"
+                            Android="170"/>
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnPlatform 
+                            x:TypeArguments="GridLength"
+                            iOS="60"
+                            Android="60"/>
+                    </RowDefinition.Height>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+			<StackLayout 
+				Grid.Row="0"
+				Padding="0, 20, 0, 20">
+                <StackLayout.Spacing>
+                    <OnPlatform 
+                        x:TypeArguments="x:Double" 
+                        iOS="15"
+						Android="10"/>
+                </StackLayout.Spacing>
+                <StackLayout.HorizontalOptions>
+                    <OnPlatform 
+                        x:TypeArguments="LayoutOptions"
+                        iOS="FillAndExpand"
+                        Android="FillAndExpand"/>
+                </StackLayout.HorizontalOptions>
+				<ctrl:StackedList 
+                    Margin="5, 0"
+                    Spacing="5"
+                    ItemsSource="{Binding Dictionaries}"
+                    SelectedCommand="{Binding ShowDictionaryCommand}"
+					VerticalOptions="FillAndExpand"
+                    ListOrientation="Horizontal">
+                    <ctrl:StackedList.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+								VerticalOptions="FillAndExpand">
+                                <Grid.WidthRequest>
+                                   <helpers:OnCustomPlatform  
+                                      x:TypeArguments="x:Double"
+                                      iOS="210"
+                                       Android="240"/>
+                                </Grid.WidthRequest>
+                                <StackLayout 
+									HorizontalOptions="FillAndExpand"
+									VerticalOptions="FillAndExpand"
+									BackgroundColor="Olive"
+                                    Padding="15, 15, 40, 15">
+									<StackLayout 
+										HorizontalOptions="FillAndExpand"
+										VerticalOptions="CenterAndExpand">
+	                                    <Label 
+											Text="{Binding PrimaryLanguage}"
+	                                        Style="{StaticResource DictionaryTitleLabelStyle}" />
+	                                   	<Label 
+											HorizontalOptions="EndAndExpand"
+											Text="{Binding SecondaryLanguage}"
+	                                        Style="{StaticResource DictionarySubtitleLabelStyle}" />
+										<StackLayout 
+											Orientation="Horizontal"
+											HorizontalOptions="FillAndExpand"
+											Padding="0, 20, 10, 0">
+											<Label 
+												Text="Available Words :"
+												Style="{StaticResource CustomLabelStyle}" />
+		                                    <Label 
+												Text="{Binding Count}"
+												Style="{StaticResource CustomLabelStyle}" />
+										</StackLayout>
+									</StackLayout>
+                                </StackLayout>
+                             </Grid>
+                         </DataTemplate>
+                     </ctrl:StackedList.ItemTemplate>
+                 </ctrl:StackedList>
+			</StackLayout>
+			<StackLayout 
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+				VerticalOptions="FillAndExpand"
+				BackgroundColor="Gray"
+				Padding="10, 20, 10, 20">
+				<StackLayout 
+					x:Name="stackWordWrapper"
+	                HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
+					WidthRequest="320"
+					Orientation="Horizontal"
+					IsVisible="{Binding IsNotTakenATest}">
+					<StackLayout.Margin>
+	                    <OnPlatform 
+	                        x:TypeArguments="Thickness"
+	                        iOS="0"
+	                        Android="30"/>
+	                </StackLayout.Margin>
+					<Label  
+	                    Text="Take a test from the above dictionaries and analyse your proficiency on selcted languages."
+	                    VerticalOptions="Center"
+						HorizontalOptions="Center"
+	                    Style="{StaticResource CustomLabelStyle}"
+						LineBreakMode="CharacterWrap"/>
+					</StackLayout>
+					<StackLayout 
+						WidthRequest="320"
+			            HorizontalOptions="CenterAndExpand"
+						VerticalOptions="CenterAndExpand"
+						Orientation="Vertical"
+						IsVisible="{Binding IsTestAlreadyTaken}">
+						<StackLayout.Margin>
+		                    <OnPlatform 
+		                        x:TypeArguments="Thickness"
+		                        iOS="0"
+		                        Android="30"/>
+		                </StackLayout.Margin>
+						<Label  
+		                    Text="Your Last Attempt..."
+		                    VerticalOptions="Center"
+							HorizontalOptions="StartAndExpand"
+		                    Style="{StaticResource ResultTitleLabelStyle}"/>
+						<Label  
+		                    Text="{Binding DictionaryTaken}"
+		                    VerticalOptions="Center"
+							HorizontalOptions="StartAndExpand"
+		                    Style="{StaticResource ResultTitleLabelStyle}"/>
+						<Label  
+		                    Text="{Binding LatetTestScore}"
+		                    VerticalOptions="Center"
+							HorizontalOptions="StartAndExpand"
+		                    Style="{StaticResource ResultTitleLabelStyle}"/>
+					</StackLayout>
+				</StackLayout>
+            <StackLayout 
+                Grid.Row="2"
+                HorizontalOptions="FillAndExpand">
+				<StackLayout.Padding>
+	                <OnPlatform 
+	                    x:TypeArguments="Thickness"
+	                    iOS="10, 0, 10, 0"/>
+	            </StackLayout.Padding>
+                <StackLayout.Margin>
+                    <OnPlatform 
+                        x:TypeArguments="Thickness"
+                        iOS="0"
+                        Android="20"/>
+                </StackLayout.Margin>
+				<StackLayout.GestureRecognizers>
+                     <TapGestureRecognizer 
+						Command="{Binding CreateNewDictionaryCommand}" 
+                        NumberOfTapsRequired="1" />
+               	</StackLayout.GestureRecognizers>
+                <Button
+                    Command="{Binding CreateNewDictionaryCommand}"
+                    Text="Create a new dictionary"
+                    AutomationId="createdictionary"
+                    Style="{StaticResource AddNewButtonStyle}">
+					<StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer 
+							Command="{Binding CreateNewDictionaryCommand}" 
+                            NumberOfTapsRequired="1" />
+                    </StackLayout.GestureRecognizers>
+				</Button>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

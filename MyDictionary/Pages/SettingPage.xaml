@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:MyDictionary.Behaviors;assembly=MyDictionary"
+    xmlns:effects="clr-namespace:MyDictionary.Effects;assembly=MyDictionary"
+    xmlns:helpers="clr-namespace:MyDictionary.Helpers;assembly=MyDictionary"
+    x:Class="MyDictionary.Pages.SettingPage"
+	Title="Settings">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+			
+            <Style x:Key="SignOutButtonStyle"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="HeightRequest"
+                        Value="54" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LargeSize}" />
+            </Style>
+
+            <Style x:Key="TitleLabelStyle"
+                   TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlackColor}" />
+            </Style>
+
+			<Style x:Key="ValueLabelStyle"
+                   TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MidMediumSize}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource GrayColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+		<Image Aspect="AspectFill">
+            <Image.Source>
+                <OnPlatform 
+                    x:TypeArguments="ImageSource"/>
+            </Image.Source>
+        </Image>
+        <Grid>
+            <Grid.Padding>
+                <OnPlatform 
+                    x:TypeArguments="Thickness"
+                    iOS="0, 0, 0, 20"
+                    Android="0, 0, 0, 30"/>
+            </Grid.Padding>
+            <Grid.VerticalOptions>
+                <OnPlatform x:TypeArguments="LayoutOptions"
+                    Android="FillAndExpand"
+                    iOS="FillAndExpand"/>
+            </Grid.VerticalOptions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnPlatform 
+                            x:TypeArguments="GridLength"
+                            iOS="60"
+                            Android="60"/>
+                    </RowDefinition.Height>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+			<StackLayout Grid.Row="0">
+                <StackLayout.Spacing>
+                    <OnPlatform 
+                        x:TypeArguments="x:Double" 
+                        iOS="15"
+						Android="10"/>
+                </StackLayout.Spacing>
+                <StackLayout.HorizontalOptions>
+                    <OnPlatform 
+                        x:TypeArguments="LayoutOptions"
+                        iOS="FillAndExpand"
+                        Android="FillAndExpand"/>
+                </StackLayout.HorizontalOptions>
+				<StackLayout
+					VerticalOptions="Center"
+					HorizontalOptions="FillAndExpand"
+					Orientation="Horizontal"
+					Margin="12">
+					<StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer 
+							Command="{Binding PrimaryLanguageCommand}" 
+                            NumberOfTapsRequired="1" />
+                    </StackLayout.GestureRecognizers>
+					<Label  
+	                    Text="Primary language"
+	                    VerticalOptions="Center"
+						HorizontalOptions="Start"
+	                    Style="{StaticResource TitleLabelStyle}"/>
+					<Label  
+	                    Text="{Binding PrimaryLanguage}"
+	                    VerticalOptions="Center"
+						HorizontalOptions="EndAndExpand"
+	                    Style="{StaticResource ValueLabelStyle}"/>
+				</StackLayout>
+				<BoxView
+					HeightRequest="1"
+					HorizontalOptions="FillAndExpand"
+					BackgroundColor="Silver"/>
+				<StackLayout
+					VerticalOptions="Center"
+					HorizontalOptions="FillAndExpand"
+					Orientation="Horizontal"
+					Margin="12">
+					<StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer 
+							Command="{Binding SecondaryLanguageCommand}" 
+                            NumberOfTapsRequired="1" />
+                    </StackLayout.GestureRecognizers>
+					<Label  
+	                    Text="Secondary language"
+	                    VerticalOptions="Center"
+						HorizontalOptions="Start"
+	                    Style="{StaticResource TitleLabelStyle}"/>
+					<Label  
+	                    Text="{Binding SecondaryLanguage}"
+	                    VerticalOptions="Center"
+						HorizontalOptions="EndAndExpand"
+	                    Style="{StaticResource ValueLabelStyle}"/>
+				</StackLayout>
+				<BoxView
+					HeightRequest="1"
+					HorizontalOptions="FillAndExpand"
+					BackgroundColor="Silver"/>
+				<StackLayout
+					VerticalOptions="Center"
+					HorizontalOptions="FillAndExpand"
+					Orientation="Horizontal"
+					Margin="12">
+					<StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer 
+							Command="{Binding MaxNoOfQuestionsCommand}" 
+                            NumberOfTapsRequired="1" />
+                    </StackLayout.GestureRecognizers>
+					<Label  
+	                    Text="Maximum number Of questions/test"
+	                    VerticalOptions="Center"
+						HorizontalOptions="Start"
+	                    Style="{StaticResource TitleLabelStyle}"/>
+					<Label  
+	                    Text="{Binding NoOfQuestions}"
+	                    VerticalOptions="Center"
+						HorizontalOptions="EndAndExpand"
+	                    Style="{StaticResource ValueLabelStyle}"/>
+				</StackLayout>
+				<BoxView
+					HeightRequest="1"
+					HorizontalOptions="FillAndExpand"
+					BackgroundColor="Silver"/>
+				<StackLayout
+					VerticalOptions="Center"
+					HorizontalOptions="FillAndExpand"
+					Orientation="Horizontal"
+					Margin="12">
+					<StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer 
+							Command="{Binding MaxNoOfQuestionsCommand}" 
+                            NumberOfTapsRequired="1" />
+                    </StackLayout.GestureRecognizers>
+					<Label  
+	                    Text="Test type"
+	                    VerticalOptions="Center"
+						HorizontalOptions="Start"
+	                    Style="{StaticResource TitleLabelStyle}"/>
+					<Label  
+	                    Text="Multiple choice"
+	                    VerticalOptions="Center"
+						HorizontalOptions="EndAndExpand"
+	                    Style="{StaticResource ValueLabelStyle}"/>
+				</StackLayout>
+				<BoxView
+					HeightRequest="1"
+					HorizontalOptions="FillAndExpand"
+					BackgroundColor="Silver"/>
+			</StackLayout>
+            <StackLayout 
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout.Margin>
+                    <OnPlatform 
+                        x:TypeArguments="Thickness"
+                        iOS="0"
+                        Android="20"/>
+                </StackLayout.Margin>
+                <Button
+                    Command="{Binding SignOutCommand}"
+                    Text="Signout me"
+                    AutomationId="signout"
+                    Style="{StaticResource SignOutButtonStyle}">
+					<Button.GestureRecognizers>
+                        <TapGestureRecognizer 
+							Command="{Binding SignOutCommand}" 
+                            NumberOfTapsRequired="1" />
+                    </Button.GestureRecognizers>
+				</Button>
+            </StackLayout>
+        </Grid>
+		<ActivityIndicator 
+            Color="{StaticResource GreenColor}"
+            IsRunning="{Binding IsBusy}" 
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Margin="0, 100, 0, 0">
+            <ActivityIndicator.WidthRequest>
+                <OnPlatform 
+                    x:TypeArguments="x:Double" 
+                    iOS="100" 
+                    Android="100"/>
+            </ActivityIndicator.WidthRequest>
+        </ActivityIndicator>
+    </Grid>
+</ContentPage>

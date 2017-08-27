@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MyDictionary.Pages;assembly=MyDictionary"
+    x:Class="MyDictionary.Pages.BasePage">
+    <MasterDetailPage.Master>
+        <local:MasterPage 
+			x:Name="masterPage"
+			BindingContext="{Binding MasterViewModel}"/>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ContentPage 
+            BackgroundColor="Transparent"/>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

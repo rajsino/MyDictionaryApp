@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:MyDictionary.Behaviors;assembly=MyDictionary"
+    xmlns:effects="clr-namespace:MyDictionary.Effects;assembly=MyDictionary"
+    xmlns:helpers="clr-namespace:MyDictionary.Helpers;assembly=MyDictionary"
+	x:Class="MyDictionary.Pages.ProfilePage"
+	Title="Sign Up">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="HeaderFieldStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="HeightRequest" Value="24" />
+                <Setter Property="Margin" Value="6, 0" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+            </Style>
+
+            <Style x:Key="FormEntryStyle" TargetType="Entry" BasedOn="{StaticResource EntryStyle}">
+                <Setter Property="HeightRequest" Value="36" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="effects:LineColorEffect.LineColor" Value="{StaticResource BlueColor}" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+
+			<Style x:Key="FormDatePickerStyle" TargetType="DatePicker">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="effects:LineColorEffect.ApplyLineColor" Value="True" />
+                <Setter Property="effects:LineColorEffect.LineColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="Opacity" Value="0.6" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid
+        BackgroundColor="WhiteColor"
+        Padding="0,0,0,1">
+        <StackLayout
+            Margin="24, 48, 24, 96">
+            <Label
+                Text="Email"    
+                Style="{StaticResource HeaderFieldStyle}" />
+            <Entry        
+                Text="{Binding Email.Value, Mode=TwoWay}"
+                Style="{StaticResource FormEntryStyle}">
+                <Entry.Behaviors>
+                    <behaviors:TurnValidOnFocusBehavior ValidityObject="{Binding Email}" />
+                </Entry.Behaviors>
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry" 
+                                 Binding="{Binding Email.IsValid}" 
+                                 Value="False">
+                        <Setter Property="effects:LineColorEffect.LineColor" Value="{StaticResource ErrorColor}" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label 
+                Text="Password"  
+                Style="{StaticResource HeaderFieldStyle}"/>
+            <Entry             
+                Text="{Binding Password.Value, Mode=TwoWay}"
+                IsPassword="true"
+                Style="{StaticResource FormEntryStyle}">
+                <Entry.Behaviors>
+                    <behaviors:TurnValidOnFocusBehavior ValidityObject="{Binding Password}" />
+                </Entry.Behaviors>
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry" 
+                                 Binding="{Binding Password.IsValid}" 
+                                 Value="False">
+                        <Setter Property="effects:LineColorEffect.LineColor" Value="{StaticResource ErrorColor}" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label 
+                Text="Repeat Password"   
+                Style="{StaticResource HeaderFieldStyle}"/>
+            <Entry      
+                Text="{Binding RepeatPassword.Value, Mode=TwoWay}"
+                IsPassword="true"
+                Style="{StaticResource FormEntryStyle}">
+                <Entry.Behaviors>
+                    <behaviors:TurnValidOnFocusBehavior ValidityObject="{Binding RepeatPassword}" />
+                    <behaviors:ValidateOnLostFocusBehavior ValidateCommand="{Binding ValidateCommand}"/>
+                </Entry.Behaviors>
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry" 
+                                 Binding="{Binding RepeatPassword.IsValid}" 
+                                 Value="False">
+                        <Setter Property="effects:LineColorEffect.LineColor" Value="{StaticResource ErrorColor}" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+
+			<Label
+                Text="First Name"    
+                Style="{StaticResource HeaderFieldStyle}" />
+            <Entry        
+                Text="{Binding FirstName.Value, Mode=TwoWay}"
+                Style="{StaticResource FormEntryStyle}">
+                <Entry.Behaviors>
+                    <behaviors:TurnValidOnFocusBehavior ValidityObject="{Binding UserName}" />
+                </Entry.Behaviors>
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry" 
+                                 Binding="{Binding FirstName.IsValid}" 
+                                 Value="False">
+                        <Setter Property="effects:LineColorEffect.LineColor" Value="{StaticResource ErrorColor}" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label 
+                Text="Last Name"
+                Style="{StaticResource HeaderFieldStyle}" />
+            <Entry  
+                Text="{Binding LastName.Value, Mode=TwoWay}"
+                Style="{StaticResource FormEntryStyle}">
+                <Entry.Behaviors>
+                    <behaviors:TurnValidOnFocusBehavior ValidityObject="{Binding UserName}" />
+                </Entry.Behaviors>
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry" 
+                                 Binding="{Binding LastName.IsValid}" 
+                                 Value="False">
+                        <Setter Property="effects:LineColorEffect.LineColor" Value="{StaticResource ErrorColor}" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label 
+                Text="Birthdate"
+                Style="{StaticResource HeaderFieldStyle}" />
+            <DatePicker 
+                Date="{Binding BirthDate, Mode=TwoWay}"
+                Style="{StaticResource FormDatePickerStyle}">
+                <DatePicker.HorizontalOptions>
+                    <helpers:OnCustomPlatform        
+                        x:TypeArguments="LayoutOptions" 
+                        Android="StartAndExpand"
+                        iOS="StartAndExpand"/>
+                </DatePicker.HorizontalOptions>
+                <DatePicker.Triggers>
+                    <Trigger TargetType="DatePicker"
+                             Property="IsFocused" Value="True">
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="effects:LineColorEffect.LineColor" Value="{StaticResource BlueColor}" />
+                    </Trigger>
+                </DatePicker.Triggers>
+            </DatePicker>
+        </StackLayout>
+    </Grid>
+</ContentPage>

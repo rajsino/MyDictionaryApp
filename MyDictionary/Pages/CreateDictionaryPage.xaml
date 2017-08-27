@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:MyDictionary.Behaviors;assembly=MyDictionary"
+    xmlns:effects="clr-namespace:MyDictionary.Effects;assembly=MyDictionary"
+    xmlns:helpers="clr-namespace:MyDictionary.Helpers;assembly=MyDictionary"
+    x:Class="MyDictionary.Pages.CreateDictionaryPage"
+	Title="My Dictionary">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+			
+            <Style x:Key="TakeTestButtonStyle"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="HeightRequest"
+                        Value="45" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LargeSize}" />
+            </Style>
+
+            <Style x:Key="TitleLabelStyle"
+                   TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MidMediumSize}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource GreenColor}" />
+            </Style>
+
+			<Style x:Key="ListLabelStyle"
+                   TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlackColor}" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+		<Image Aspect="AspectFill">
+            <Image.Source>
+                <OnPlatform 
+                    x:TypeArguments="ImageSource"/>
+            </Image.Source>
+        </Image>
+        <Grid>
+			<Grid.Padding>
+	           <OnPlatform 
+	              x:TypeArguments="Thickness"
+	              iOS="10, 10, 10, 0"
+	              Android="10, 10, 10, 0"/>
+	        </Grid.Padding>
+            <Grid.VerticalOptions>
+                <OnPlatform x:TypeArguments="LayoutOptions"
+                    Android="FillAndExpand"
+                    iOS="FillAndExpand"/>
+            </Grid.VerticalOptions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnPlatform 
+                            x:TypeArguments="GridLength"
+                            iOS="50"
+                            Android="50"/>
+                    </RowDefinition.Height>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+			<StackLayout Grid.Row="0">
+                <StackLayout.Spacing>
+                    <OnPlatform 
+                        x:TypeArguments="x:Double" 
+                        iOS="5"
+						Android="5"/>
+                </StackLayout.Spacing>
+                <StackLayout.HorizontalOptions>
+                    <OnPlatform 
+                        x:TypeArguments="LayoutOptions"
+                        iOS="FillAndExpand"
+                        Android="FillAndExpand"/>
+                </StackLayout.HorizontalOptions>
+				<Label  
+                    Text="{Binding PrimaryTitle}"
+                    VerticalOptions="Center"
+                    Style="{StaticResource TitleLabelStyle}">
+					<Label.GestureRecognizers>
+                        <TapGestureRecognizer 
+							Command="{Binding MyProfileCommand}" 
+                            NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
+				<Entry 
+                    x:Name="PrimaryWord"
+                    Text="{Binding PrimaryWord, Mode=TwoWay}"
+                    AutomationId="entryprimarypanguage"
+                    Placeholder="Enter primary word">
+                    <Entry.Style>
+                        <OnPlatform x:TypeArguments="Style"
+                        iOS="{StaticResource EntryStyle}"
+                        Android="{StaticResource EntryStyle}"/>
+                    </Entry.Style>
+                    <Entry.Behaviors>
+                        <behaviors:TurnValidOnFocusBehavior ValidityObject="{Binding PrimaryWord}" />
+                    </Entry.Behaviors>
+                </Entry>
+				<Label  
+                   Text="{Binding SecondaryTitle}"
+                    VerticalOptions="Center"
+                    Style="{StaticResource TitleLabelStyle}">
+					<Label.GestureRecognizers>
+                        <TapGestureRecognizer 
+							Command="{Binding SettingsCommand}" 
+                            NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
+				<Entry 
+                    x:Name="SecondaryWord"
+                    Text="{Binding SecondaryWord, Mode=TwoWay}"
+                    AutomationId="entrysecondarypanguage"
+                    Placeholder="Enter secondary word">
+                    <Entry.Style>
+                        <OnPlatform x:TypeArguments="Style"
+                        iOS="{StaticResource EntryStyle}"
+                        Android="{StaticResource EntryStyle}"/>
+                    </Entry.Style>
+                    <Entry.Behaviors>
+                        <behaviors:TurnValidOnFocusBehavior ValidityObject="{Binding SecondaryWord}" />
+                    </Entry.Behaviors>
+                </Entry>
+				<Button
+                    Command="{Binding AddNewItem}"
+                    Text="Add to dictionary"
+                    AutomationId="addtodictionary"
+                    Style="{StaticResource TakeTestButtonStyle}">
+					<Button.GestureRecognizers>
+                        <TapGestureRecognizer 
+							Command="{Binding AddNewItem}" 
+                            NumberOfTapsRequired="1" />
+                    </Button.GestureRecognizers>
+				</Button>
+				<BoxView
+					HeightRequest="2"
+					HorizontalOptions="FillAndExpand"
+					BackgroundColor="{StaticResource GreenColor}"/>
+				<ListView 
+					x:Name="listView" 
+					ItemsSource="{Binding DictionaryItems}"
+					Margin="5">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<ViewCell>
+								<StackLayout 
+									HorizontalOptions="FillAndExpand" 
+									Orientation="Horizontal">
+									<Label 
+										Style="{StaticResource ListLabelStyle}"
+										Text="{Binding PrimaryWord}" 
+										VerticalTextAlignment="Center" 
+										FontSize="12"
+										Margin="10, 0, 0, 0"/>
+									<Label 
+										Style="{StaticResource ListLabelStyle}"
+										Text="{Binding SecondaryWord}" 
+										HorizontalOptions="EndAndExpand"
+										VerticalTextAlignment="Center" 
+										FontSize="12"/>
+								</StackLayout>
+							</ViewCell>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+			</StackLayout>
+            <StackLayout 
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand">
+                <Button
+                    Command="{Binding TakeTestCommand}"
+					IsVisible="{Binding IsTakeTestVisible}"
+                    Text="Take a test"
+                    AutomationId="taketest"
+                    Style="{StaticResource TakeTestButtonStyle}">
+					<Button.GestureRecognizers>
+                        <TapGestureRecognizer 
+							Command="{Binding TakeTestCommand}" 
+                            NumberOfTapsRequired="1" />
+                    </Button.GestureRecognizers>
+				</Button>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

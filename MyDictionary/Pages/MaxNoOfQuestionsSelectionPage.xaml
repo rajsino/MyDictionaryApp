@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:MyDictionary.Controls;assembly=MyDictionary"
+	x:Class="MyDictionary.Pages.MaxNoOfQuestionsSelectionPage"
+	Title="No; of questions">
+	<ContentPage.Resources>
+        <ResourceDictionary>
+			
+            <Style x:Key="TitleLabelStyle"
+                   TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlackColor}" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+	<Grid>
+        <Grid.BackgroundColor>
+            <OnPlatform
+                x:TypeArguments="Color" 
+                WinPhone="{StaticResource WhiteColor}"/>
+        </Grid.BackgroundColor>
+		<local:CustomListView 
+			x:Name="listView" 
+			ItemsSource="{Binding MaxCount}"
+			ItemClickCommand="{Binding SelectCommand}"
+			Margin="5">
+			<local:CustomListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout 
+							HorizontalOptions="StartAndExpand" 
+							Orientation="Horizontal">
+							<Label 
+								Style="{StaticResource TitleLabelStyle}"
+								Text="{Binding .}" 
+								VerticalTextAlignment="Center" 
+								FontSize="14"
+								Margin="5"/>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</local:CustomListView.ItemTemplate>
+		</local:CustomListView>
+	</Grid>
+</ContentPage>
