@@ -3,9 +3,9 @@ Sample Xamarin Forms App
 
 Just take an [Android apk  from here](https://github.com/rajsino/MyDictionaryApp/blob/master/Builds/com.pritix.studentapps.mydictionary.apk).
 
-The solution file MyDictionary.sln contains the code of Xamarin Forms App. The major heighlights of app is,
+The solution file MyDictionary.sln contains the code of Xamarin Forms App. The major heighlights of this project is,
 
-* Above 90% of code sharing
+* Above 90% of code is shared
 * Integrated Azure Services
 * XAML based forms UI Design
 * Unity Dependancy Injection
