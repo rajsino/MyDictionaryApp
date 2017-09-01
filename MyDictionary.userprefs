@@ -1,7 +1,11 @@
 ﻿<Properties StartupConfiguration="{53AA1FA3-AF1E-4920-BEEA-FBEBAF5B51AF}|Default">
-  <MonoDevelop.Ide.ItemProperties.MyDictionary.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.1115fb80ae3f4005" />
+  <MonoDevelop.Ide.ItemProperties.MyDictionary.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Wear_Square_API_23" />
   <MonoDevelop.Ide.ItemProperties.MyDictionary.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.7CBD9E68-0179-4036-9A9D-CCBDBC028DB4" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MyDictionary/Services/NavigationService.cs">
+    <Files>
+      <File FileName="MyDictionary/Services/NavigationService.cs" Line="86" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

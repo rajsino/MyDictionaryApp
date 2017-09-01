@@ -5,7 +5,7 @@
 // Created          : 27-08-2017
 //
 // ***********************************************************************
-// <copyright file="ViewDictionaryViewModel.cs" company="Xebia">
+// <copyright file="ViewDictionaryViewModel.cs" company="Dreamz">
 //     Copyright ©  2017
 // </copyright>
 // <summary></summary>

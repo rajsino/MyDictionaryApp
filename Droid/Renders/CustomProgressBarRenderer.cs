@@ -5,7 +5,7 @@
 // Created          : 20-08-2017
 //
 // ***********************************************************************
-// <copyright file="CustomProgressBarRenderer.cs" company="Xebia">
+// <copyright file="CustomProgressBarRenderer.cs" company="Dreamz">
 //     Copyright ©  2017
 // </copyright>
 // <summary></summary>

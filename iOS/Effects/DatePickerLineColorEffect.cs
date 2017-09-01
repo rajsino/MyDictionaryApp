@@ -5,7 +5,7 @@
 // Created          : 27-08-2017
 //
 // ***********************************************************************
-// <copyright file="DatePickerLineColorEffect.cs" company="Xebia">
+// <copyright file="DatePickerLineColorEffect.cs" company="Dreamz">
 //     Copyright ©  2017
 // </copyright>
 // <summary></summary>

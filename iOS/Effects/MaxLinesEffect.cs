@@ -5,7 +5,7 @@
 // Created          : 27-08-2017
 //
 // ***********************************************************************
-// <copyright file="MaxLinesEffect.cs" company="Xebia">
+// <copyright file="MaxLinesEffect.cs" company="Dreamz">
 //     Copyright ©  2017
 // </copyright>
 // <summary></summary>

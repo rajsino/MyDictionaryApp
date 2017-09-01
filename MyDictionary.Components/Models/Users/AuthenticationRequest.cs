@@ -5,7 +5,7 @@
 // Created          : 19-08-2017
 //
 // ***********************************************************************
-// <copyright file="AuthenticationRequest.cs" company="Xebia">
+// <copyright file="AuthenticationRequest.cs" company="Dreamz">
 //     Copyright ©  2017
 // </copyright>
 // <summary></summary>

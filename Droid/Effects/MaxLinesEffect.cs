@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Android.Widget;
 using MyDictionary.Droid.Effects;
 using MyDictionary.Effects;

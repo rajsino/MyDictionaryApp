@@ -5,7 +5,7 @@
 // Created          : 20-08-2017
 //
 // ***********************************************************************
-// <copyright file="ImageButtonRenderer.cs" company="Xebia">
+// <copyright file="ImageButtonRenderer.cs" company="Dreamz">
 //     Copyright ©  2017
 // </copyright>
 // <summary></summary>

@@ -5,7 +5,7 @@
 // Created          : 20-08-2017
 //
 // ***********************************************************************
-// <copyright file="RequestProvider.cs" company="Xebia">
+// <copyright file="RequestProvider.cs" company="Dreamz">
 //     Copyright ©  2017
 // </copyright>
 // <summary></summary>

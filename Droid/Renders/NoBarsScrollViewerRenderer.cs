@@ -5,7 +5,7 @@
 // Created          : 20-08-2017
 //
 // ***********************************************************************
-// <copyright file="NoBarsScrollViewerRenderer.cs" company="Xebia">
+// <copyright file="NoBarsScrollViewerRenderer.cs" company="Dreamz">
 //     Copyright ©  2017
 // </copyright>
 // <summary></summary>

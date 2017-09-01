@@ -5,7 +5,7 @@
 // Created          : 19-08-2017
 //
 // ***********************************************************************
-// <copyright file="Settings.cs" company="Xebia">
+// <copyright file="Settings.cs" company="Dreamz">
 //     Copyright ©  2017
 // </copyright>
 // <summary></summary>

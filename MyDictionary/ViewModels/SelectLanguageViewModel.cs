@@ -5,7 +5,7 @@
 // Created          : 27-08-2017
 //
 // ***********************************************************************
-// <copyright file="SelectLanguageViewModel.cs" company="Xebia">
+// <copyright file="SelectLanguageViewModel.cs" company="Dreamz">
 //     Copyright ©  2017
 // </copyright>
 // <summary></summary>
